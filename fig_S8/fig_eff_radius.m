@@ -3,9 +3,16 @@ clear; clc
 
 rng(15)
 
-d_in = './data/';
+d_in = '../data/';
+d_save = './fig/';
 
+sham_cl = [40 163 127]/255;
+tbi_cl = [210 82 24]/255;
+
+% Define 'cg' or 'cc'
 roi = 'cg';
+
+% Define 'ipsi' or 'contra'
 brain_h = 'ipsi';
 
 load([d_in roi '_morph.mat']);
@@ -79,11 +86,6 @@ tbi_w = tbi_v./sum(tbi_v);
 
 %% r distribution
 
-d_fig = '/Users/abdola01/projects/proj_unmyel/fig_effective_rad/';
-
-sham_cl = [40 163 127]/255;
-tbi_cl = [210 82 24]/255;
-
 figure('unit','inch','position',[0 0 2 2])
 h1 = histogram(sham_r, 'FaceColor', sham_cl); hold on
 h2 = histogram(tbi_r, 'FaceColor', tbi_cl); hold on
@@ -103,10 +105,10 @@ effect = util_nonparam_effect_size(sham_r, tbi_r);
 effect = round(-effect*100)/100;
 title(['$d_{\mathrm{eff}} = \, $', num2str(effect, '%.2f')] ,'interpreter', 'latex','fontsize',10)
 
-% exportgraphics(gca,[d_fig roi '_' brain_h '_radius.png'], 'Resolution', 300)
+% exportgraphics(gca,[d_save roi '_' brain_h '_radius.png'], 'Resolution', 300)
 
 
-%%
+%% w * r_eff^4
 
 ws_rp = ceil(1e3 * (sham_w / max(sham_w)));
 sham_effR_rp = repelem(sham_r_eff, ws_rp); 
@@ -134,10 +136,10 @@ effect = util_nonparam_effect_size(sham_effR_rp, tbi_effR_rp);
 effect = round(-effect*100)/100;
 title(['$d_{\mathrm{eff}} = \, $', num2str(effect, '%.2f')] ,'interpreter', 'latex','fontsize',10)
 
-% exportgraphics(gca,[d_fig roi '_' brain_h '_eff_radius.png'], 'Resolution', 300)
+% exportgraphics(gca,[d_save roi '_' brain_h '_eff_radius.png'], 'Resolution', 300)
 
 
-%%
+%% w / < 1/alpha >
 
 sham_walpha_rp = repelem(sham_walpha, ws_rp); 
 tbi_walpha_rp = repelem(tbi_walpha, wt_rp);
@@ -162,5 +164,5 @@ effect = util_nonparam_effect_size(sham_walpha_rp, tbi_walpha_rp);
 effect = round(-effect*100)/100;
 title(['$d_{\mathrm{eff}} = \, $', num2str(effect, '%.2f')] ,'interpreter', 'latex','fontsize',10)
 
-% exportgraphics(gca,[d_fig roi '_' brain_h '_cv2.png'], 'Resolution', 300)
+% exportgraphics(gca,[d_save roi '_' brain_h '_cv2.png'], 'Resolution', 300)
 
