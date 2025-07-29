@@ -35,7 +35,8 @@ view(30, 50)
 set(gca,'Visible','off', 'Color','k'); axis equal; grid off; axis off
 box off; grid off;
 
-% exportgraphics(gca, [d_save fn '.png'],'BackgroundColor','none','Resolution',300)
+
+exportgraphics(gca, [d_save fn '.png'],'BackgroundColor','none','Resolution',300)
 
 
 %% Visualization of a small axon segment
@@ -73,7 +74,7 @@ camlight; material dull; lighting gouraud;
 view(-105, 17)
 set(gca,'Visible','off', 'Color','k'); axis equal; grid off; axis off
 box off; grid off;
-% exportgraphics(gca, [d_save fn '_seg.png'],'BackgroundColor','none','Resolution',300)
+exportgraphics(gca, [d_save fn '_seg.png'],'BackgroundColor','none','Resolution',300)
 
 
 figure('unit','inch','position',[0 0 1.2 1.2])
@@ -82,4 +83,4 @@ h1.EdgeAlpha = 0; h1.FaceAlpha = 1;
 ylim([0 1.2]); pbaspect([2 1 1]);
 set(gca,'xtick',[0,100,200], 'xticklabel',[],'ytick',[0,1],'yticklabel',[],'TickDir', 'out')
 xtickangle(0); grid off; box off
-% exportgraphics(gca, [d_save fn '_seg_area.png'],'Resolution',300)
+exportgraphics(gca, [d_save fn '_seg_area.png'],'Resolution',300)
