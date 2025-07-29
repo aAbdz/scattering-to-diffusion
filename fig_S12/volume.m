@@ -1,15 +1,24 @@
 
 clear; clc
 
-% [tortuosity, Gamma_0, sinosity, volume, l_gd, l_eq]; 
-
 rng(15)
 
 d_in = '../data/';
+d_save = './fig/';
 
+sham_cl = [40 163 127]/255;
+tbi_cl = [210 82 24]/255;
+
+
+% Define 'cg' or 'cc'
 roi = 'cg';
+
+% Define 'ipsi' or 'contra'
 brain_h = 'ipsi';
 
+% column1 = tortuosity % column2 = Gamma0
+% column3 = sinuosity  % column4 = axon volume
+% column5 = geodesic   % column6 = Euclidean length
 load([d_in roi '_geo_param.mat']);
 
 x1 = getfield(gamma_tortuosity, ['h_25_' brain_h]);
@@ -44,11 +53,6 @@ tbi_l = tbi_smpl_x(:,5);
 
 
 %% v distribution
-
-d_fig = '/Users/aliabd/Projects/Project_unmAxons/NYU_DL/proj_unmyel/fig_volume/';
-
-sham_cl = [40 163 127]/255;
-tbi_cl = [210 82 24]/255;
 
 figure('unit','inch','position',[0 0 2 2])
 h1 = histogram(sham_v, 'FaceColor', sham_cl); hold on

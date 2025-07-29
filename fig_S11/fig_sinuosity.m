@@ -4,10 +4,21 @@ clear
 rng(15)
 
 d_in = '../data/';
+d_save = './fig/';
 
+sham_cl = [40 163 127]/255;
+tbi_cl = [210 82 24]/255;
+
+
+% Define 'cg' or 'cc'
 roi = 'cg';
+
+% Define 'ipsi' or 'contra'
 brain_h = 'ipsi';
 
+% column1 = tortuosity % column2 = Gamma0
+% column3 = sinuosity  % column4 = axon volume
+% column5 = geodesic   % column6 = Euclidean length
 load([d_in roi '_geo_param.mat']);
 
 x1 = getfield(gamma_tortuosity, ['h_25_' brain_h]);
@@ -44,11 +55,6 @@ tbi_s = tbi_smpl_x(:,3);
 %%
 % sinuosity distribution
 
-d_fig = '/Users/abdola01/projects/proj_unmyel/fig_effective_rad/';
-
-sham_cl = [40 163 127]/255;
-tbi_cl = [210 82 24]/255;
-
 figure('unit','inch','position',[0 0 2 2])
 h1 = histogram(sham_s, 'FaceColor', sham_cl); hold on
 h2 = histogram(tbi_s, 'FaceColor', tbi_cl); hold on
@@ -68,6 +74,6 @@ effect = util_nonparam_effect_size(sham_s, tbi_s);
 effect = round(-effect*100)/100;
 title(['$d_{\mathrm{eff}} = \, $', num2str(effect, '%.2f')] ,'interpreter', 'latex','fontsize',10)
 
-% exportgraphics(gca,[d_fig roi '_' brain_h '_sinuosity.png'], 'Resolution', 300)
+% exportgraphics(gca,[d_save roi '_' brain_h '_sinuosity.png'], 'Resolution', 300)
 
 
