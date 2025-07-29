@@ -3,7 +3,7 @@
 
 clear; clc; close all
 
-d_in = '../data/';
+d_in = './data1/';
 d_save = './fig/';
 
 tbi_color = [217 108 58]/255;
@@ -22,7 +22,7 @@ tbi_color = [217 108 58]/255;
 % cg_LM_24_contra_axon_101
 % cg_LM_24_contra_axon_1001
 
-fn = 'cg_LM_24_contra_axon_10';
+fn = 'cg_LM_24_contra_axon_10.mat';
 
 fn_in = [d_in fn];
 bin_obj = load(fn_in); bin_obj = bin_obj.axon;
@@ -46,7 +46,7 @@ box off; grid off;
 
 clear;  clc; close all
 
-d_in = './data/';
+d_in = './data1/';
 d_save = './fig/';
 
 tbi_color = [217 108 58]/255;
