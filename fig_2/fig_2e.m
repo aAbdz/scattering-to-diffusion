@@ -5,7 +5,7 @@
 clear
 
 % synthetic axons
-d = './data/';
+d = '../data/';
 load([d, 'simulation_synth.mat']);
 d_save = './fig/';
 
@@ -80,7 +80,7 @@ xlim([1 1.6]); ylim([1 1.6]); pbaspect([1 1 1]);
 set(gca,'xtick',[1:0.2:2.5],'ytick',[1:0.2:2.5])
 box on; grid on; set(gca,'GridLineStyle','--')
 
-exportgraphics(gca, [d_save 'tortuosity_synth.png'],'Resolution',300)
+% exportgraphics(gca, [d_save 'tortuosity_synth.png'],'Resolution',300)
 
 
 %%
@@ -88,7 +88,7 @@ exportgraphics(gca, [d_save 'tortuosity_synth.png'],'Resolution',300)
 clear
 
 % EM axons
-d = './data/';
+d = '../data/';
 load([d, 'simulation_EM.mat']);
 d_save = './fig/';
 
@@ -192,8 +192,7 @@ xlim([1 2.5]); ylim([1 2.5]); pbaspect([1 1 1]);
 set(gca,'xtick',[1:0.5:3],'ytick',[1:0.5:3])
 box on; grid on; set(gca,'GridLineStyle','--')
 
-
-exportgraphics(gca, [d_save 'tortuosity_em.png'],'Resolution',300)
+% exportgraphics(gca, [d_save 'tortuosity_em.png'],'Resolution',300)
 
 
 

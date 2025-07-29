@@ -5,7 +5,7 @@
 
 clear; close all; clc
 
-d_in = './data/';
+d_in = './data2/';
 d_save = './fig/';
 
 fn = 'axon_0.33_47.mat';
@@ -101,4 +101,4 @@ xlim([0 1.5e1]); ylim([0 10]); pbaspect([1 1 1]);
 xticks([1e-2, 1]); yticks(10.^[-3:2:1]); grid on;
 set(gca,'fontsize',12)
 
-exportgraphics(gca, [d_save 'power_spectrum.png'],'Resolution',300)
+% exportgraphics(gca, [d_save 'power_spectrum.png'],'Resolution',300)

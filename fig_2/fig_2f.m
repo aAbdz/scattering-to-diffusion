@@ -5,7 +5,7 @@
  
 clear
 
-d = './data/';
+d = '../data/';
 load([d, 'simulation_synth.mat']);
 d_save = './fig/';
 
@@ -91,7 +91,7 @@ set(gca,'xtick',[0:0.5:1.5],'ytick',[0:0.5:1.5])
 box on; grid on; set(gca,'GridLineStyle','--')
 xlim([0 1.5]); ylim([0 1.5]); pbaspect([1 1 1]);
 
-exportgraphics(gca, [d_save 'cd_synth.png'],'Resolution',300)
+% exportgraphics(gca, [d_save 'cd_synth.png'],'Resolution',300)
 
 % Generate just a colorbar for synth axons
 colormap(cmap)
@@ -104,7 +104,7 @@ c.Ticks = [0.2:0.25:0.7];
 
 clear
 
-d = './data/';
+d = '../data/';
 load([d, 'simulation_EM.mat']);
 d_save = './fig/';
 
@@ -233,7 +233,7 @@ set(gca,'xtick',[0:0.5:2],'ytick',[0:0.5:2])
 box on; grid on; set(gca,'GridLineStyle','--')
 xlim([0 2]); ylim([0 2]); pbaspect([1 1 1]);
 
-exportgraphics(gca, [d_save 'cd_real.png'],'Resolution',300)
+% exportgraphics(gca, [d_save 'cd_real.png'],'Resolution',300)
 
 
 % Generate just a colorbar for TBIs
@@ -242,7 +242,7 @@ surf(peaks); colormap(cmap_red)
 c = colorbar;
 clim([0.2 0.7])
 c.Ticks = [0.2:0.25:0.7];
-exportgraphics(gca, [d_save 'colorbar_red.png'],'Resolution',300)
+% exportgraphics(gca, [d_save 'colorbar_red.png'],'Resolution',300)
 
 
 % Generate just a colorbar for Shams
@@ -251,4 +251,4 @@ surf(peaks); colormap(cmap_green)
 c = colorbar;
 clim([0.2 0.7])
 c.Ticks = [0.2:0.25:0.7];
-exportgraphics(gca, [d_save 'colorbar_green.png'],'Resolution',300)
+% exportgraphics(gca, [d_save 'colorbar_green.png'],'Resolution',300)

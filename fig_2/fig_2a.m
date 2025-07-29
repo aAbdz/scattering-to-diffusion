@@ -3,7 +3,7 @@
 
 clear; clc; close all
 
-d_in = './data/';
+d_in = './data2/';
 d_save = './fig/';
 
 color_ = [48 172 66]/255;
@@ -15,7 +15,7 @@ fineness = 1000;
 max_r = 7;
 grid_res = 0.25;
 
-% Axon's name in the ./data directory
+% Axon's name in the ./data2 directory
 fn = 'cc_LM_25_contra_axon_1';
 fn_in = [d_in fn];
 
@@ -37,7 +37,7 @@ p.FaceColor = color_; p.EdgeColor = 'none';
 view(40, 0)
 camlight; material dull; lighting gouraud;
 box off; axis equal; grid off; axis off
-exportgraphics(gca, [d_save fn '.png'],'BackgroundColor','none','Resolution',300)
+% exportgraphics(gca, [d_save fn '.png'],'BackgroundColor','none','Resolution',300)
 
 figure('unit','inch','position',[0 0 3 1.2])
 h1 = area(alpha, 'FaceColor', color_); hold on
@@ -45,7 +45,7 @@ h1.EdgeAlpha = 0; h1.FaceAlpha = 1;
 ylim([-1.2 3.1]); xlim([0 length(area_i)]); pbaspect([2 1 1]);
 set(gca,'xtick',[],'ytick',[-1,0,1],'TickDir', 'out')
 xtickangle(0); grid off; box off
-exportgraphics(gca, [d_save fn '_hist.png'],'Resolution',300)
+% exportgraphics(gca, [d_save fn '_hist.png'],'Resolution',300)
 
 
 
@@ -74,7 +74,7 @@ camlight; material dull; lighting gouraud;
 view(42, 42)
 set(gca,'Visible','off', 'Color','k'); axis equal; grid off; axis off
 box off; grid off;
-exportgraphics(gca, [d_save fn '.png'],'BackgroundColor','none','Resolution',300)
+% exportgraphics(gca, [d_save fn '.png'],'BackgroundColor','none','Resolution',300)
 
 figure('unit','inch','position',[0 0 3 1.2])
 h1 = area(alpha, 'FaceColor', color_); hold on
@@ -82,7 +82,7 @@ h1.EdgeAlpha = 0; h1.FaceAlpha = 1;
 ylim([-1.2 3.1]); xlim([0 length(area_i)]); pbaspect([2 1 1]);
 set(gca,'xtick',[],'ytick',[-1,0,1],'TickDir', 'out')
 xtickangle(0); grid off; box off
-exportgraphics(gca, [d_save fn '_hist.png'],'Resolution',300)
+% exportgraphics(gca, [d_save fn '_hist.png'],'Resolution',300)
 
 
 %% Synthetic axon: 500 micron
@@ -112,7 +112,7 @@ camlight; material dull; lighting gouraud;
 view(-100, 0)
 set(gca,'Visible','off', 'Color','k'); axis equal; grid off; axis off
 box off; grid off;
-exportgraphics(gca, [d_save fn '.png'],'BackgroundColor','none','Resolution',300)
+% exportgraphics(gca, [d_save fn '.png'],'BackgroundColor','none','Resolution',300)
 
 alpha_sec = alpha(1:inx);
 figure('unit','inch','position',[0 0 3 1.2])
@@ -121,7 +121,7 @@ h1.EdgeAlpha = 0; h1.FaceAlpha = 1;
 ylim([-1.2 3.1]); xlim([0 length(alpha_sec)]); pbaspect([2 1 1]);
 set(gca,'xtick',[],'ytick',[-1,0,1],'TickDir', 'out')
 xtickangle(0); grid off; box off
-exportgraphics(gca, [d_save fn '_hist_sec1.png'],'Resolution',300)
+% exportgraphics(gca, [d_save fn '_hist_sec1.png'],'Resolution',300)
 
 
 
@@ -136,7 +136,7 @@ camlight; material dull; lighting gouraud;
 view(-100, 0)
 set(gca,'Visible','off', 'Color','k'); axis equal; grid off; axis off
 box off; grid off;
-exportgraphics(gca, [d_save fn '_sec2.png'],'BackgroundColor','none','Resolution',300)
+% exportgraphics(gca, [d_save fn '_sec2.png'],'BackgroundColor','none','Resolution',300)
 
 alpha_sec = alpha(end-inx:end);
 figure('unit','inch','position',[0 0 3 1.2])
@@ -145,7 +145,7 @@ h1.EdgeAlpha = 0; h1.FaceAlpha = 1;
 ylim([-1.2 3.1]); xlim([0 length(alpha_sec)]); pbaspect([2 1 1]);
 set(gca,'xtick',[],'ytick',[-1,0,1],'yticklabel',[],'TickDir', 'out')
 xtickangle(0); grid off; box off
-exportgraphics(gca, [d_save fn '_hist_sec2.png'],'Resolution',300)
+% exportgraphics(gca, [d_save fn '_hist_sec2.png'],'Resolution',300)
 
 
 

@@ -11,7 +11,7 @@
 
 clear;  clc
 
-d_in = './data/cg_LM_49_contra_axon_1.mat';
+d_in = './data2/cg_LM_49_contra_axon_1.mat';
 d_save = './figs/';
 
 colors = [150 150 170; 
@@ -50,7 +50,7 @@ h_inx = floor(length(q)/2);
 % D_inf is estimated based on geometry
 D_inf = D0 ./ mean(mean(area_i)./area_i);
 ell = round(sqrt(2*D_inf*dims*ts));
-beta = 0.93;
+beta = 1-0.07;
 
 figure('unit','inch','position',[0 0 2.7 2.7]); hold on
 for i = 1:length(ell)

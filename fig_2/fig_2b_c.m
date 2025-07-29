@@ -1,7 +1,7 @@
 
 clear
 
-d = './data/';
+d = '../data/';
 d_save = './fig/';
 
 synth_color = [148 8 125]/255;
@@ -92,7 +92,7 @@ set(gca,'xtick',[0:250:500],'ytick',0.7:0.1:0.9)
 box on; grid off;
 xtickangle(0)
 
-exportgraphics(gca,[d_save 'diff_linear.png'],'Resolution',300)
+% exportgraphics(gca,[d_save 'diff_linear.png'],'Resolution',300)
 
 %% Plot Axial D(t) of synth, sham, and TBI axons vs. 1/sqrt(t)
 
@@ -114,4 +114,4 @@ set(gca,'xtick',[0:0.25:0.5],'ytick',0.7:0.1:0.9)
 box on; grid off;
 xtickangle(0)
 
-exportgraphics(gca,[d_save 'diff_sqrt.png'],'Resolution',300)
+% exportgraphics(gca,[d_save 'diff_sqrt.png'],'Resolution',300)

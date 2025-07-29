@@ -2,7 +2,7 @@
 clear
 
 rng(15)
-d_in = './data/';
+d_in = '../data/';
 d_save = './fig/';
 
 sham_color = [27 184 99]/255;
