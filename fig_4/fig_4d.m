@@ -3,7 +3,7 @@ clear; clc; close all
 
 rng(15)
 
-d_in = './data/';
+d_in = '../data/';
 d_save = './fig/';
 
 sham_cl = [27 184 99]/255;
@@ -16,14 +16,13 @@ YY = [1, 1, 2, 1, 2];
 samples = {'exvivo_250110_AA-1','exvivo_250112_AA-3','exvivo_250113_AA_4','exvivo_250117_AA-5','exvivo_250118_AA_6'};
 colors = {[208,88,40]/255, [249,41,43]/255, [23,217,86]/255, [252,144,43]/255, [39,126,83]/255};
 
-region = 'contra';
+region = 'ipsi';
 anatomy_labels = {'Spl-CC', 'Bdy-CC', 'Cg'};
 
 diff_t = [7, 15, 20, 30, 40];
 D0 = 2; 
 
 load([d_in 'exvivo_AD_' region '.mat']);
-
 
 param = struct('sample', {}, 'anatomy', {}, 'region', {}, 'tort', [], 'G0', [], 'D_inf', [], 'cD', []);
 entry = struct;
@@ -100,10 +99,10 @@ for kk = 1:length(anatomy_labels)
             'MarkerEdgeColor', [0.1 0.1 0.1], 'MarkerEdgeAlpha', 0.3); hold on
     end
     grid off; box on; axis equal
-    set(gca, 'xtick', 1.5:1:7, 'ytick', 0:1:4, 'TickDir','in', 'TickLength', [0,0], ...
+    set(gca, 'xtick', 2.5:0.5:4, 'ytick', 0:0.5:1.5, 'TickDir','in', 'TickLength', [0,0], ...
         'xaxisLocation','bottom', 'yaxisLocation','left', 'linewidth',1.1, 'fontsize', 15)
 
-    xlim([1.5 5.5]); ylim([0 4]);
+    xlim([1.5 3.5]); ylim([0 2]);
 
     smpl_X = [smpl_X1; smpl_X2]';
     mn = min(smpl_X);
@@ -164,7 +163,7 @@ for kk = 1:length(anatomy_labels)
     bias_perp = y_mid - slope_perp * x_mid;
     
     x_vals = linspace(0, max(x0)+5, 100);
-    y_vals_perp = slope_perp * x_vals + bias_perp - 1;
+    y_vals_perp = slope_perp * x_vals + bias_perp - 0;
     
     plot(x_vals, y_vals_perp, '--', 'color', [50,50,120]/255, 'LineWidth', 1.5)
 
@@ -220,13 +219,16 @@ for kk = 1:length(anatomy_labels)
     h1 = histogram(smpl_sham); hold on
     h2 = histogram(smpl_tbi);
     
-    h1.Normalization = 'probability'; h1.BinWidth = 0.07; 
+    h1.Normalization = 'probability'; h1.BinWidth = 0.04; 
     h1.EdgeColor = sham_cl; h1.FaceColor = sham_cl; h1.FaceAlpha = 0.85;
     
-    h2.Normalization = 'probability'; h2.BinWidth = 0.07; 
+    h2.Normalization = 'probability'; h2.BinWidth = 0.04; 
     h2.EdgeColor = tbi_cl; h2.FaceColor = tbi_cl; h2.FaceAlpha = 0.85;
 
     pbaspect([2 1 1]);
+    xlim([1.5 3.5]);
+    yl = ylim; ylim([yl(1), yl(2) * 1.05]); 
+
     set(gca,'xtick',[],'ytick',[], 'xaxisLocation','bottom', 'linewidth',.7)
     box off; h = gca; h.YAxis.Visible = 'off'; 
     
@@ -287,21 +289,20 @@ for kk = 1:length(anatomy_labels)
     smpl_sham = [smpl_X(smpl_Y==2)];
     smpl_tbi  = [smpl_X(smpl_Y==1)];
 
-    iqr_val = iqr(smpl_tbi);
-    binWidth = 0.5*iqr_val / numel(smpl_tbi)^(1/3);        
-
-
     figure('unit','inch','position',[0 0 3 3]); hold on
     h1 = histogram(smpl_sham); hold on
     h2 = histogram(smpl_tbi);
     
-    h1.Normalization = 'probability'; h1.BinWidth = binWidth; 
+    h1.Normalization = 'probability'; h1.BinWidth = 0.06; 
     h1.EdgeColor = sham_cl; h1.FaceColor = sham_cl; h1.FaceAlpha = 0.85;
     
-    h2.Normalization = 'probability'; h2.BinWidth = binWidth; 
+    h2.Normalization = 'probability'; h2.BinWidth = 0.06; 
     h2.EdgeColor = tbi_cl; h2.FaceColor = tbi_cl; h2.FaceAlpha = 0.85;
 
     pbaspect([2 1 1]);
+    xlim([0 2]);
+    yl = ylim; ylim([yl(1), yl(2) * 1.05]); 
+
     set(gca,'xtick',[],'ytick',[], 'xaxisLocation','bottom', 'linewidth',.7, 'XDir', 'reverse')
     box off; h = gca; h.YAxis.Visible = 'off'; 
     
@@ -377,14 +378,17 @@ for kk = 1:length(anatomy_labels)
     h1 = histogram(proj_sham(:,1)); hold on
     h2 = histogram(proj_tbi(:,1));
     
-    h1.Normalization = 'probability'; h1.BinWidth = 0.07; 
+    h1.Normalization = 'probability'; h1.BinWidth = 0.06; 
     h1.EdgeColor = sham_cl; h1.FaceColor = sham_cl; h1.FaceAlpha = 0.85;
     
-    h2.Normalization = 'probability'; h2.BinWidth = 0.07; 
+    h2.Normalization = 'probability'; h2.BinWidth = 0.06; 
     h2.EdgeColor = tbi_cl; h2.FaceColor = tbi_cl; h2.FaceAlpha = 0.85;
 
-    set(gca,'xtick',[0 0.75 1.5], 'ytick',[], 'xaxisLocation','bottom', ...
+    set(gca,'xtick',[1 2.5 4], 'ytick',[], 'xaxisLocation','bottom', ...
         'xColor', [50,50,120]/255, 'YColor', [50,50,120]/255, 'linewidth',1.1, 'fontsize', 10)
+
+    xlim([1 4]);
+    yl = ylim; ylim([yl(1), yl(2) * 1.05]); 
 
     xline(median(proj_sham(:,1)), '--', 'LineWidth', 1, 'Color', max(sham_cl-0.15,0))
     xline(median(proj_tbi(:,1)), '--', 'LineWidth', 1, 'Color', max(tbi_cl-0.15,0))
